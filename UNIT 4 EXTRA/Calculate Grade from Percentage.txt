@@ -1,0 +1,17 @@
+CREATE OR REPLACE FUNCTION get_grade(p NUMBER)
+RETURN VARCHAR2
+IS
+BEGIN
+    IF p >= 90 THEN
+        RETURN 'A';
+    ELSIF p >= 75 THEN
+        RETURN 'B';
+    ELSIF p >= 60 THEN
+        RETURN 'C';
+    ELSIF p >= 40 THEN
+        RETURN 'D';
+    ELSE
+        RETURN 'F';
+    END IF;
+END;
+/

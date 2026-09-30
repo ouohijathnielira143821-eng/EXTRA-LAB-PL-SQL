@@ -1,0 +1,14 @@
+DECLARE
+    CURSOR c1(dno NUMBER) IS
+        SELECT * FROM emp WHERE deptno = dno;
+BEGIN
+    FOR r IN c1(10) LOOP
+        INSERT INTO emp_backup
+        VALUES (r.empno, r.ename, r.job, r.mgr,
+                r.hiredate, r.sal, r.comm, r.deptno);
+    END LOOP;
+
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Employees copied successfully');
+END;
+/

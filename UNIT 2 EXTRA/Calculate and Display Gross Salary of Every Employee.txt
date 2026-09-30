@@ -1,0 +1,12 @@
+DECLARE
+    CURSOR c1 IS SELECT ename, sal FROM emp;
+    v_gross NUMBER;
+BEGIN
+    FOR r IN c1 LOOP
+        v_gross := r.sal + (r.sal * 0.20) + (r.sal * 0.10);
+        DBMS_OUTPUT.PUT_LINE(
+            r.ename || ' Gross Salary: ' || v_gross
+        );
+    END LOOP;
+END;
+/

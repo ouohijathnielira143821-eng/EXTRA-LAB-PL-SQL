@@ -1,0 +1,13 @@
+CREATE TABLE EMP_INSERT_AUDIT (
+    emp_id NUMBER,
+    insert_date DATE,
+    username VARCHAR2(30)
+);
+CREATE OR REPLACE TRIGGER trg_insert_audit
+AFTER INSERT ON emp
+FOR EACH ROW
+BEGIN
+    INSERT INTO emp_insert_audit
+    VALUES (:NEW.empno, SYSDATE, USER);
+END;
+/

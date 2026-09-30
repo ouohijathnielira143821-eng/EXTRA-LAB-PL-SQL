@@ -1,0 +1,14 @@
+CREATE TABLE SALARY_HISTORY (
+    emp_id NUMBER,
+    old_salary NUMBER,
+    new_salary NUMBER,
+    change_date DATE
+);
+CREATE OR REPLACE TRIGGER trg_salary_history
+AFTER UPDATE OF sal ON emp
+FOR EACH ROW
+BEGIN
+    INSERT INTO salary_history
+    VALUES (:OLD.empno, :OLD.sal, :NEW.sal, SYSDATE);
+END;
+/

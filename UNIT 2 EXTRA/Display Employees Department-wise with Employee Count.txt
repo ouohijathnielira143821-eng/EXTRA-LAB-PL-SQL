@@ -1,0 +1,18 @@
+DECLARE
+    CURSOR c1(dno NUMBER) IS
+        SELECT ename FROM emp WHERE deptno = dno;
+    v_count NUMBER;
+BEGIN
+    FOR d IN (SELECT DISTINCT deptno FROM emp) LOOP
+        v_count := 0;
+        DBMS_OUTPUT.PUT_LINE('Department: ' || d.deptno);
+
+        FOR r IN c1(d.deptno) LOOP
+            DBMS_OUTPUT.PUT_LINE(r.ename);
+            v_count := v_count + 1;
+        END LOOP;
+
+        DBMS_OUTPUT.PUT_LINE('Total Employees: ' || v_count);
+    END LOOP;
+END;
+/

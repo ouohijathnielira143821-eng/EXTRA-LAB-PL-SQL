@@ -1,0 +1,9 @@
+CREATE OR REPLACE TRIGGER trg_check_update_salary
+BEFORE UPDATE OF sal ON emp
+FOR EACH ROW
+BEGIN
+    IF :NEW.sal < 0 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Negative salary is not allowed');
+    END IF;
+END;
+/

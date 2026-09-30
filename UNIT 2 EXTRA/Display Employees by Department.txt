@@ -1,0 +1,9 @@
+DECLARE
+    CURSOR c1(dno NUMBER) IS
+        SELECT ename, sal FROM emp WHERE deptno = dno;
+BEGIN
+    FOR r IN c1(10) LOOP
+        DBMS_OUTPUT.PUT_LINE(r.ename || ' ' || r.sal);
+    END LOOP;
+END;
+/

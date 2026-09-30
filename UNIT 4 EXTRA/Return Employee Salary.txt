@@ -1,0 +1,10 @@
+CREATE OR REPLACE PROCEDURE get_salary(
+    p_id IN NUMBER,
+    p_sal OUT NUMBER
+)
+IS
+BEGIN
+    SELECT sal INTO p_sal
+    FROM emp WHERE empno = p_id;
+END;
+/

@@ -1,0 +1,14 @@
+DECLARE
+    v_age NUMBER := &age;
+    INVALID_AGE EXCEPTION;
+BEGIN
+    IF v_age < 18 OR v_age > 60 THEN
+        RAISE INVALID_AGE;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Valid age');
+EXCEPTION
+    WHEN INVALID_AGE THEN
+        DBMS_OUTPUT.PUT_LINE('Invalid age');
+END;
+/

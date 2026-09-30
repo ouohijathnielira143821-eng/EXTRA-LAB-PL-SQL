@@ -1,0 +1,27 @@
+DECLARE
+    v_name emp.ename%TYPE;
+    v_num NUMBER;
+BEGIN
+    SELECT ename INTO v_name
+    FROM emp
+    WHERE empno = &emp_id;
+
+    v_num := 10 / &divisor;
+
+    DBMS_OUTPUT.PUT_LINE('Employee: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Result: ' || v_num);
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Employee not found');
+
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Multiple records found');
+
+    WHEN ZERO_DIVIDE THEN
+        DBMS_OUTPUT.PUT_LINE('Cannot divide by zero');
+
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Unexpected error occurred');
+END;
+/

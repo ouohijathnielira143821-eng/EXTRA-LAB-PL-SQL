@@ -1,0 +1,9 @@
+BEGIN
+    INSERT INTO emp(empno, ename)
+    VALUES (7369, 'RAHUL');
+
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE('Duplicate primary key value');
+END;
+/

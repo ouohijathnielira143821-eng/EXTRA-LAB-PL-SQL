@@ -1,0 +1,12 @@
+CREATE OR REPLACE TRIGGER trg_prevent_delete
+BEFORE DELETE ON emp
+FOR EACH ROW
+BEGIN
+    IF :OLD.deptno = 10 THEN
+        RAISE_APPLICATION_ERROR(
+            -20003,
+            'Deletion not allowed for department 10'
+        );
+    END IF;
+END;
+/

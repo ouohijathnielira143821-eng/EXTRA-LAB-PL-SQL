@@ -1,0 +1,13 @@
+CREATE OR REPLACE PROCEDURE increase_salary(
+    p_id IN NUMBER,
+    p_percent IN NUMBER
+)
+IS
+BEGIN
+    UPDATE emp
+    SET sal = sal + (sal * p_percent / 100)
+    WHERE empno = p_id;
+
+    DBMS_OUTPUT.PUT_LINE('Salary updated');
+END;
+/

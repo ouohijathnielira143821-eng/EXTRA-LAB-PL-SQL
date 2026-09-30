@@ -1,0 +1,17 @@
+DECLARE
+    v_sal emp.sal%TYPE;
+    LOW_SALARY EXCEPTION;
+    v_limit NUMBER := 5000;
+BEGIN
+    SELECT sal INTO v_sal FROM emp WHERE empno = 7369;
+
+    IF v_sal < v_limit THEN
+        RAISE LOW_SALARY;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Salary is sufficient');
+EXCEPTION
+    WHEN LOW_SALARY THEN
+        DBMS_OUTPUT.PUT_LINE('Salary is below the specified limit');
+END;
+/

@@ -1,0 +1,15 @@
+DECLARE
+    CURSOR c1 IS SELECT empno FROM emp WHERE deptno = 10;
+    v_id emp.empno%TYPE;
+BEGIN
+    OPEN c1;
+    LOOP
+        FETCH c1 INTO v_id;
+        EXIT WHEN c1%NOTFOUND;
+        UPDATE emp SET sal = sal * 1.10 WHERE empno = v_id;
+    END LOOP;
+    CLOSE c1;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Salary increased by 10%');
+END;
+/

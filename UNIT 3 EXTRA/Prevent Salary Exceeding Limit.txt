@@ -1,0 +1,11 @@
+DECLARE
+    v_sal NUMBER := &salary;
+    v_limit NUMBER := 50000;
+BEGIN
+    IF v_sal > v_limit THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Salary exceeds the limit');
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Salary accepted');
+END;
+/

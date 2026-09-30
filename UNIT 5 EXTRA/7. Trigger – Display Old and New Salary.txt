@@ -1,0 +1,8 @@
+CREATE OR REPLACE TRIGGER trg_display_salary
+AFTER UPDATE OF sal ON emp
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Old Salary: ' || :OLD.sal);
+    DBMS_OUTPUT.PUT_LINE('New Salary: ' || :NEW.sal);
+END;
+/

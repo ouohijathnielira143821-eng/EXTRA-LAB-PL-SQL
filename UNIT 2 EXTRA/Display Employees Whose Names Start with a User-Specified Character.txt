@@ -1,0 +1,11 @@
+DECLARE
+    v_char CHAR(1) := '&character';
+BEGIN
+    FOR r IN (
+        SELECT ename FROM emp
+        WHERE UPPER(ename) LIKE UPPER(v_char) || '%'
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE(r.ename);
+    END LOOP;
+END;
+/

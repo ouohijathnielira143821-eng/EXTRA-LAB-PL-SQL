@@ -1,0 +1,14 @@
+CREATE TABLE EMP_AUDIT (
+    empno NUMBER,
+    ename VARCHAR2(20),
+    sal NUMBER,
+    action_date DATE
+);
+CREATE OR REPLACE TRIGGER trg_emp_insert
+AFTER INSERT ON emp
+FOR EACH ROW
+BEGIN
+    INSERT INTO emp_audit
+    VALUES (:NEW.empno, :NEW.ename, :NEW.sal, SYSDATE);
+END;
+/

@@ -1,0 +1,8 @@
+BEGIN
+    FOR r IN (SELECT ename, deptno, sal FROM emp) LOOP
+        DBMS_OUTPUT.PUT_LINE(
+            r.ename || ' ' || r.deptno || ' ' || r.sal
+        );
+    END LOOP;
+END;
+/

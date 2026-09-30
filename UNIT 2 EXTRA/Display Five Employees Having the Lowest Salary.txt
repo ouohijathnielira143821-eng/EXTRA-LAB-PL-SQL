@@ -1,0 +1,11 @@
+DECLARE
+    CURSOR c1 IS
+        SELECT ename, sal FROM emp
+        ORDER BY sal ASC
+        FETCH FIRST 5 ROWS ONLY;
+BEGIN
+    FOR r IN c1 LOOP
+        DBMS_OUTPUT.PUT_LINE(r.ename || ' ' || r.sal);
+    END LOOP;
+END;
+/

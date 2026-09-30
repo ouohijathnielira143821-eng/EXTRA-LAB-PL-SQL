@@ -1,0 +1,14 @@
+CREATE TABLE SALARY_AUDIT (
+    empno NUMBER,
+    old_salary NUMBER,
+    new_salary NUMBER,
+    action_date DATE
+);
+CREATE OR REPLACE TRIGGER trg_salary_update
+AFTER UPDATE OF sal ON emp
+FOR EACH ROW
+BEGIN
+    INSERT INTO salary_audit
+    VALUES (:OLD.empno, :OLD.sal, :NEW.sal, SYSDATE);
+END;
+/

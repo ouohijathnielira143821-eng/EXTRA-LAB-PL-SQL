@@ -1,0 +1,10 @@
+CREATE OR REPLACE PROCEDURE dept_count(
+    p_deptno IN NUMBER,
+    p_count OUT NUMBER
+)
+IS
+BEGIN
+    SELECT COUNT(*) INTO p_count
+    FROM emp WHERE deptno = p_deptno;
+END;
+/

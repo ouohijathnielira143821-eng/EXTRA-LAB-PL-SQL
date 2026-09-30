@@ -1,0 +1,14 @@
+CREATE TABLE EMP_DELETE_AUDIT (
+    empno NUMBER,
+    ename VARCHAR2(20),
+    sal NUMBER,
+    delete_date DATE
+);
+CREATE OR REPLACE TRIGGER trg_emp_delete
+AFTER DELETE ON emp
+FOR EACH ROW
+BEGIN
+    INSERT INTO emp_delete_audit
+    VALUES (:OLD.empno, :OLD.ename, :OLD.sal, SYSDATE);
+END;
+/

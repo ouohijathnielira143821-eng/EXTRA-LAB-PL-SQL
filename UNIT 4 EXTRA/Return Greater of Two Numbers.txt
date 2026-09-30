@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION greater_num(a NUMBER, b NUMBER)
+RETURN NUMBER
+IS
+BEGIN
+    IF a > b THEN
+        RETURN a;
+    ELSE
+        RETURN b;
+    END IF;
+END;
+/
